@@ -1,0 +1,324 @@
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background: #fff;
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #91ce50;
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+/*.w Individ: .wishlist-icon {*/
+/*    position: absolute;*/
+/*    top: 12px;*/
+/*    right: 12px;*/
+/*    font-size: 20px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+.product-image {
+    height: 150px;
+    object-fit: contain;
+    margin: 20px auto;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0 4px;
+    text-align: left;
+}
+
+.product-brand {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #ff5e00;
+}
+
+.quantity-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.quantity-cart .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.quantity-cart button {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #ccc;
+    background: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.quantity-cart .add-to-cart {
+    width: 90%;
+    margin-left: 0;
+    padding: 10px;
+    background: #4ce9d1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.quantity-cart .add-to-cart:hover {
+    background: #4ae1cb;
+}
+
+.quantity-cart span {
+    font-size: 14px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 8px;
+}
+
+.pagination button {
+    background-color: #eee;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pagination button.active {
+    background-color: #32dabb;
+    color: white;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 20px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-body {
+    display: flex;
+    gap: 20px;
+}
+
+.modal-image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-image .product-image {
+    height: 400px;
+    width: 100%;
+    object-fit: contain;
+    border: 1px solid #ededed;
+    border-radius: 18px;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 14px;
+}
+
+.thumbnail.active {
+    border-color: #32dabb;
+}
+
+.modal-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.modal-category {
+    font-size: 14px;
+    color: #292929;
+    margin-bottom: -6px;
+}
+
+.modal-brand {
+    font-size: 14px;
+    color: #292929;
+    margin-bottom: -2px;
+}
+
+.modal-description {
+    font-size: 14px;
+    color: #292929;
+}
+
+.modal-variants h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.variant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.variant-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.variant-item input[type="radio"] {
+    margin: 0;
+}
+
+.variant-item span {
+    font-size: 14px;
+}
+
+body.modal-active {
+    overflow: hidden;
+}
+
+.variant-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 6px 20px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #c3c3c3;
+    border-radius: 4px;
+    background-color: #ffffff;
+    transition: border-color 0.25s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    min-width: 120px;
+    text-align: center;
+    user-select: none;
+}
+
+.variant-item input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Hover chỉ áp dụng khi chưa chọn */
+.variant-item:hover:not(:has(input[type="radio"]:checked)) {
+    background-color: #ffffff;
+}
+
+/* Khi đã chọn: viền cố định #4ce9d1, không thay đổi khi hover */
+.variant-item:has(input[type="radio"]:checked) {
+    border-color: #4ce9d1;
+    background-color: #ffffff;
+}
+.variant-item:has(input[type="radio"]:checked):hover {
+    border-color: #4ce9d1;
+}
+
+/* Focus accessibility */
+.variant-item input[type="radio"]:focus-visible {
+    outline: 3px solid rgba(76, 233, 209, 0.4);
+    outline-offset: 2px;
+}
+
+.variant-label {
+    width: 100%;
+    pointer-events: none;
+}

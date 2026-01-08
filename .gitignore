@@ -1,0 +1,25 @@
+# Java / Spring Boot
+target/
+*.war
+*.jar
+*.class
+
+# Node.js / Frontend
+node_modules/
+.cache/
+dist/
+build/
+
+# IDE / Editor
+.idea/
+*.iml
+.vscode/
+*.swp
+
+.env
+backend/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+frontend/node_modules/

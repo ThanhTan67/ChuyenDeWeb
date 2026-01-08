@@ -1,0 +1,87 @@
+.order_history_part {
+    padding-top: 80px;
+}
+
+.order_status_tabs .nav-tabs {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.order_status_tabs .nav-tabs .nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.order_status_tabs .nav-tabs .nav-link.active {
+    color: #ff3368;
+    border-bottom: 2px solid #ff3368;
+}
+
+.order_status_tabs .nav-tabs .nav-link:hover {
+    color: #ff3368;
+}
+
+.order_section {
+    border: 1px solid #eee;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+.single_confirmation_details {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 22px;
+    margin-bottom: 20px;
+}
+
+.single_confirmation_details h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.single_confirmation_details ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.single_confirmation_details ul li p {
+    margin: 0;
+    color: #666;
+}
+
+.single_confirmation_details ul li span {
+    color: #333;
+    font-weight: 500;
+}
+
+.order_details_iner {
+    margin-top: 50px;
+    background-color: rgb(248 254 255);
+    padding: 30px 30px 15px;
+    text-transform: capitalize;
+}
+
+.order_details_iner table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.order_details_iner table th,
+.order_details_iner table td {
+    padding: 10px;
+    vertical-align: middle;
+    border: 1px solid #e8e8e8;
+
+}
+
+/* Đường kẻ ngang dưới mỗi sản phẩm (không áp dụng cho dòng tổng, giảm giá, phí vận chuyển, tổng tiền) */
+.order_details_iner table tbody tr.product-row:not(:last-child) {
+    border-bottom: 1px solid #e2e2e2;
+}
