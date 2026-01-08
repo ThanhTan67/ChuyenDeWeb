@@ -60,24 +60,25 @@ public class SecurityConfig {
                 .build();
     }
 
-    @Bean
+  @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-
+    
         config.setAllowedOrigins(List.of(
-                "http://localhost:3000"
+            "http://localhost:3000",
+            "https://aranoz-one.vercel.app"
         ));
         config.setAllowedMethods(List.of(
-                "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"
+            "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"
         ));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
         config.setMaxAge(3600L);
-
+    
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
-        return source;
-    }
+    return source;
+}
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -96,3 +97,4 @@ public class SecurityConfig {
         return tx;
     }
 }
+
