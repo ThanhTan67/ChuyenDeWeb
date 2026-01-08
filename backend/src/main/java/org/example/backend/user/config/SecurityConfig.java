@@ -60,15 +60,16 @@ public class SecurityConfig {
                 .build();
     }
 
-  @Bean
+    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
     
-        cconfig.setAllowedOriginPatterns(List.of(
+        config.setAllowedOriginPatterns(List.of(
             "http://localhost:3000",
-            "https://aranoz-one.vercel.app"
+            "https://aranoz-one.vercel.app",
+            "https://*.vercel.app"   // thêm pattern để chắc chắn match domain Vercel
         ));
-
+    
         config.setAllowedMethods(List.of(
             "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"
         ));
@@ -78,8 +79,9 @@ public class SecurityConfig {
     
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
-    return source;
+        return source;
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -98,5 +100,6 @@ public class SecurityConfig {
         return tx;
     }
 }
+
 
 
