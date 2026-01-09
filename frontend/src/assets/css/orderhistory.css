@@ -3,7 +3,7 @@
 }
 
 .order_status_tabs .nav-tabs {
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #ffffff;
     margin-bottom: 20px;
 }
 
@@ -17,8 +17,8 @@
 }
 
 .order_status_tabs .nav-tabs .nav-link.active {
-    color: #ff3368;
-    border-bottom: 2px solid #ff3368;
+    color: #ffab00;
+    border-bottom: 2px solid #ffab00;
 }
 
 .order_status_tabs .nav-tabs .nav-link:hover {
@@ -83,4 +83,5 @@
     border-bottom: 1px solid #e2e2e2;
 
 }
+
 
