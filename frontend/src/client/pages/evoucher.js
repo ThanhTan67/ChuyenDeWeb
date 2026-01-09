@@ -18,10 +18,11 @@ import '../../assets/css/uvoucher.css';
 const EVoucher = () => {
     return (
         <Layout>
-            <Breadcrumb title="Kho voucher" subtitle="Kho voucher - Trang chủ" />
+            <Breadcrumb title="Kho voucher" subtitle="Trang chủ" />
             <SavedVoucherList />
         </Layout>
     );
 };
+
 
 export default EVoucher;
