@@ -29,11 +29,10 @@
     border: 1px solid #eee;
     padding: 20px;
     margin-bottom: 30px;
-    border-radius: 8px;
 }
 
 .single_confirmation_details {
-    background: #f8f8f8;
+    border: 1px solid #e9ecef;
     padding: 20px;
     border-radius: 22px;
     margin-bottom: 20px;
@@ -84,4 +83,5 @@
 /* Đường kẻ ngang dưới mỗi sản phẩm (không áp dụng cho dòng tổng, giảm giá, phí vận chuyển, tổng tiền) */
 .order_details_iner table tbody tr.product-row:not(:last-child) {
     border-bottom: 1px solid #e2e2e2;
+
 }
