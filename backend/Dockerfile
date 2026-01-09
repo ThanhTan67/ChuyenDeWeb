@@ -1,7 +1,7 @@
 # Build stage
 FROM maven:3-openjdk-17 AS build
 WORKDIR /app
-COPY backend /app
+COPY . .
 RUN mvn -f /app/pom.xml clean package -DskipTests
 
 # Run stage
@@ -10,3 +10,4 @@ WORKDIR /app
 COPY --from=build /app/target/backend-0.0.1-SNAPSHOT.war backend.war
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","backend.war"]
+
