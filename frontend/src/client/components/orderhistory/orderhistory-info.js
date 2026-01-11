@@ -253,13 +253,13 @@ const OrderHistory = () => {
                                             <table className="table table-borderless">
                                                 <thead>
                                                 <tr>
-                                                    <th scope="col" colSpan="2" style={{ textAlign: 'center', color: 'black', fontSize: '15px', fontWeight: '500', , textTransform: 'none' }}>
+                                                    <th scope="col" colSpan="2" style={{ textAlign: 'center', color: 'black', fontSize: '15px', fontWeight: '500',  textTransform: 'none' }}>
                                                         Sản phẩm
                                                     </th>
-                                                    <th scope="col" style={{ textAlign: 'center', color: 'black', fontSize: '15px', fontWeight: '500', , textTransform: 'none' }}>
+                                                    <th scope="col" style={{ textAlign: 'center', color: 'black', fontSize: '15px', fontWeight: '500',  textTransform: 'none' }}>
                                                         Số lượng
                                                     </th>
-                                                    <th scope="col" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', , textTransform: 'none' }}>
+                                                    <th scope="col" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500',  textTransform: 'none' }}>
                                                         Tổng
                                                     </th>
                                                 </tr>
@@ -326,7 +326,7 @@ const OrderHistory = () => {
                                                             color: '#505050',
                                                             fontSize: '15px',
                                                             fontWeight: 'bold',
-                                                            ,
+                                                            
                                                             padding: '12px 8px'
                                                         }}>
                                                             x{item.quantity}
@@ -342,7 +342,7 @@ const OrderHistory = () => {
                                                                     color: '#505050',
                                                                     fontSize: '15px',
                                                                     fontWeight: '500',
-                                                                    
+                                                                    fontFamily: 'Poppins, sans-serif'
                                                                 }}>
                                                                     {(item.productPrice * item.quantity).toLocaleString('vi-VN')}₫
                                                                 </span>
@@ -351,11 +351,11 @@ const OrderHistory = () => {
                                                 ))}
 
                                                 <tr>
-                                                    <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', , textTransform: 'none' }}>
+                                                    <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500',  textTransform: 'none' }}>
                                                         Tạm tính
                                                     </td>
                                                     <td style={{ textAlign: 'right' }}>
-                                                            <span style={{ color: 'red', fontSize: '15px', fontWeight: 'bold', , textTransform: 'none' }}>
+                                                            <span style={{ color: 'red', fontSize: '15px', fontWeight: 'bold',  textTransform: 'none' }}>
                                                                 {calculateSubtotal(orderDetails[order.id] || []).toLocaleString('vi-VN')}₫
                                                             </span>
                                                     </td>
@@ -363,11 +363,11 @@ const OrderHistory = () => {
 
                                                 {getDiscountValue(order) > 0 && (
                                                     <tr>
-                                                        <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', , textTransform: 'none' }}>
+                                                        <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500',  textTransform: 'none' }}>
                                                             Giảm giá
                                                         </td>
                                                         <td style={{ textAlign: 'right' }}>
-                                                                <span style={{ color: '#ff3900', fontSize: '15px', fontWeight: 'bold', , textTransform: 'none' }}>
+                                                                <span style={{ color: '#ff3900', fontSize: '15px', fontWeight: 'bold',  textTransform: 'none' }}>
                                                                     -{getDiscountValue(order).toLocaleString('vi-VN')}₫
                                                                 </span>
                                                         </td>
@@ -375,11 +375,11 @@ const OrderHistory = () => {
                                                 )}
 
                                                 <tr>
-                                                    <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', , textTransform: 'none' }}>
+                                                    <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500',  textTransform: 'none' }}>
                                                         Phí vận chuyển
                                                     </td>
                                                     <td style={{ textAlign: 'right' }}>
-                                                            <span style={{ color: 'red', fontSize: '15px', fontWeight: 'bold', , textTransform: 'none' }}>
+                                                            <span style={{ color: 'red', fontSize: '15px', fontWeight: 'bold',  textTransform: 'none' }}>
                                                                 {order.ship.toLocaleString('vi-VN')}₫
                                                             </span>
                                                     </td>
@@ -387,11 +387,11 @@ const OrderHistory = () => {
                                                 </tbody>
                                                 <tfoot>
                                                 <tr>
-                                                    <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', , textTransform: 'none' }}>
+                                                    <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500',  textTransform: 'none' }}>
                                                         Tổng tiền
                                                     </td>
                                                     <td style={{ textAlign: 'right' }}>
-                                                            <span style={{ color: 'red', fontSize: '15px', fontWeight: 'bold', , textTransform: 'none' }}>
+                                                            <span style={{ color: 'red', fontSize: '15px', fontWeight: 'bold',  textTransform: 'none' }}>
                                                                 {order.totalMoney.toLocaleString('vi-VN')}₫
                                                             </span>
                                                     </td>
