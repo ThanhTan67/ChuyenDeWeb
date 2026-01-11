@@ -7,7 +7,7 @@ const ORDER_API_URL = `${process.env.REACT_APP_API_BASE_URL || 'https://localhos
 const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dp2jfvmlh/image/upload/';
 
 const OrderHistory = () => {
-    const { user, isLoggedIn,loading: authLoading } = useAuth();
+    const { user, isLoggedIn, loading: authLoading } = useAuth();
     const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
     const [orderDetails, setOrderDetails] = useState({});
@@ -59,6 +59,7 @@ const OrderHistory = () => {
                             withCredentials: true,
                         })
                     );
+
                     const detailsResponses = await Promise.all(detailsPromises);
                     const detailsMap = {};
                     detailsResponses.forEach((res, index) => {
@@ -161,58 +162,35 @@ const OrderHistory = () => {
                                     <div className="col-lg-12">
                                         <div className="confirmation_tittle"></div>
                                     </div>
-                                    <div className="col-lg-6 col-lx-4">
+
+                                    <div className="col-lg-6 col-xl-4">
                                         <div className="single_confirmation_details">
                                             <h4>Thông tin đặt hàng</h4>
                                             <ul>
-                                                <li>
-                                                    <p>Mã đơn hàng</p>
-                                                    <span>{order.id}</span>
-                                                </li>
-                                                <li>
-                                                    <p>Ngày đặt</p>
-                                                    <span>{new Date(order.bookingDate).toLocaleString('vi-VN')}</span>
-                                                </li>
-                                                <li>
-                                                    <p>Tổng thanh toán</p>
-                                                    <span>{order.totalMoney.toLocaleString('vi-VN')}₫</span>
-                                                </li>
-                                                <li>
-                                                    <p>Phương thức thanh toán</p>
-                                                    <span>{order.paymentMethod}</span>
-                                                </li>
+                                                <li><p>Mã đơn hàng</p><span>{order.id}</span></li>
+                                                <li><p>Ngày đặt</p><span>{new Date(order.bookingDate).toLocaleString('vi-VN')}</span></li>
+                                                <li><p>Tổng thanh toán</p><span>{order.totalMoney.toLocaleString('vi-VN')}₫</span></li>
+                                                <li><p>Phương thức thanh toán</p><span>{order.paymentMethod}</span></li>
                                             </ul>
                                         </div>
                                     </div>
 
-                                    <div className="col-lg-6 col-lx-4">
+                                    <div className="col-lg-6 col-xl-4">
                                         <div className="single_confirmation_details">
                                             <h4>Địa chỉ giao hàng</h4>
                                             <ul>
-                                                <li>
-                                                    <p>Người nhận</p>
-                                                    <span>{order.consigneeName}</span>
-                                                </li>
-                                                <li>
-                                                    <p>Số điện thoại</p>
-                                                    <span>{order.consigneePhone}</span>
-                                                </li>
-                                                <li>
-                                                    <p>Địa chỉ</p>
-                                                    <span>{order.address}</span>
-                                                </li>
+                                                <li><p>Người nhận</p><span>{order.consigneeName}</span></li>
+                                                <li><p>Số điện thoại</p><span>{order.consigneePhone}</span></li>
+                                                <li><p>Địa chỉ</p><span>{order.address}</span></li>
                                             </ul>
                                         </div>
                                     </div>
 
-                                    <div className="col-lg-6 col-lx-4">
+                                    <div className="col-lg-6 col-xl-4">
                                         <div className="single_confirmation_details">
                                             <h4>Thông tin bổ sung</h4>
                                             <ul>
-                                                <li>
-                                                    <p>Ghi chú giao hàng</p>
-                                                    <span>{order.orderNotes || 'Không có'}</span>
-                                                </li>
+                                                <li><p>Ghi chú giao hàng</p><span>{order.orderNotes || 'Không có'}</span></li>
                                                 <li>
                                                     <p>Trạng thái đơn hàng</p>
                                                     <span style={{
@@ -240,71 +218,88 @@ const OrderHistory = () => {
                                         <div className="order_details_iner">
                                             <table className="table table-borderless">
                                                 <thead>
-                                                <tr>
-                                                    <th scope="col" colSpan="2" style={{color:'black',fontSize:'15px', fontWeight:'500',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>Sản phẩm</th>
-                                                    <th scope="col" style={{color:'black',fontSize:'15px', fontWeight:'500',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>Số lượng</th>
-                                                    <th scope="col" style={{color:'black',fontSize:'15px', fontWeight:'500',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>Tổng</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th scope="col" colSpan="2" style={{ textAlign: 'center', color: 'black', fontSize: '15px', fontWeight: '500', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                            Sản phẩm
+                                                        </th>
+                                                        <th scope="col" style={{ textAlign: 'center', color: 'black', fontSize: '15px', fontWeight: '500', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                            Số lượng
+                                                        </th>
+                                                        <th scope="col" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                            Tổng
+                                                        </th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                {orderDetails[order.id]?.map((item) => (
-                                                    <tr key={item.id}>
-                                                        <th colSpan="2" style={{color:'black',fontSize:'15px', textTransform:'none'}}>
-                                                            <span>
-                                                                {item.productName}
-                                                                {(item.variantAttribute || item.variantName) && (
-                                                                    <small style={{ display: 'block', color: '#666' }}>
-                                                                        {item.variantAttribute} - {item.variantName}
-                                                                    </small>
-                                                                )}
-                                                            </span>
-                                                        </th>
-                                                        <th style={{color:'#505050',fontSize:'15px', fontWeight:'bold',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>
-                                                            x{item.quantity}
-                                                        </th>
-                                                        <th>
-                                                            <span style={{color:'#505050',fontSize:'15px', fontWeight:'500',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>{(item.productPrice * item.quantity).toLocaleString('vi-VN')}₫</span>
-                                                        </th>
-                                                    </tr>
-                                                ))}
-                                                <tr>
-                                                    <th colSpan="3" style={{color:'black',fontSize:'15px', fontWeight:'500',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>
-                                                        Tạm tính
-                                                    </th>
-                                                    <th>
-                                                        <span style={{color:'red',fontSize:'15px', fontWeight:'bold',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>{calculateSubtotal(orderDetails[order.id] || []).toLocaleString('vi-VN')}₫</span>
-                                                    </th>
-                                                </tr>
-                                                {getDiscountValue(order) > 0 && (
+                                                    {orderDetails[order.id]?.map((item) => (
+                                                        <tr key={item.id}>
+                                                            <td colSpan="2" style={{ color: 'black', fontSize: '15px', textTransform: 'none' }}>
+                                                                <span>
+                                                                    {item.productName}
+                                                                    {(item.variantAttribute || item.variantName) && (
+                                                                        <small style={{ display: 'block', color: '#666' }}>
+                                                                            {item.variantAttribute} - {item.variantName}
+                                                                        </small>
+                                                                    )}
+                                                                </span>
+                                                            </td>
+                                                            <td style={{ textAlign: 'center', color: '#505050', fontSize: '15px', fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                                x{item.quantity}
+                                                            </td>
+                                                            <td style={{ textAlign: 'right' }}>
+                                                                <span style={{ color: '#505050', fontSize: '15px', fontWeight: '500', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                                    {(item.productPrice * item.quantity).toLocaleString('vi-VN')}₫
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+
                                                     <tr>
-                                                        <th colSpan="3" style={{color:'black',fontSize:'15px', fontWeight:'500',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>
-                                                            Giảm giá
-                                                        </th>
-                                                        <th>
-                                                            <span style={{color:'#ff3900',fontSize:'15px', fontWeight:'bold',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>
-                                                                -{getDiscountValue(order).toLocaleString('vi-VN')}₫
+                                                        <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                            Tạm tính
+                                                        </td>
+                                                        <td style={{ textAlign: 'right' }}>
+                                                            <span style={{ color: 'red', fontSize: '15px', fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                                {calculateSubtotal(orderDetails[order.id] || []).toLocaleString('vi-VN')}₫
                                                             </span>
-                                                        </th>
+                                                        </td>
                                                     </tr>
-                                                )}
-                                                <tr>
-                                                    <th colSpan="3" style={{color:'black',fontSize:'15px', fontWeight:'500',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>
-                                                        Phí vận chuyển
-                                                    </th>
-                                                    <th>
-                                                        <span style={{color:'red',fontSize:'15px', fontWeight:'bold',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>{order.ship.toLocaleString('vi-VN')}₫</span>
-                                                    </th>
-                                                </tr>
+
+                                                    {getDiscountValue(order) > 0 && (
+                                                        <tr>
+                                                            <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                                Giảm giá
+                                                            </td>
+                                                            <td style={{ textAlign: 'right' }}>
+                                                                <span style={{ color: '#ff3900', fontSize: '15px', fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                                    -{getDiscountValue(order).toLocaleString('vi-VN')}₫
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    )}
+
+                                                    <tr>
+                                                        <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                            Phí vận chuyển
+                                                        </td>
+                                                        <td style={{ textAlign: 'right' }}>
+                                                            <span style={{ color: 'red', fontSize: '15px', fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                                {order.ship.toLocaleString('vi-VN')}₫
+                                                            </span>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                                 <tfoot>
-                                                <tr>
-                                                    <th scope="col" colSpan="3" style={{color:'black',fontSize:'15px', fontWeight:'500',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>
-                                                        Tổng tiền
-                                                    </th>
-                                                    <th scope="col" style={{color:'red',fontSize:'15px', fontWeight:'bold',fontFamily:'Poppins, sans-serif', textTransform:'none'}}>
-                                                        {order.totalMoney.toLocaleString('vi-VN')}₫
-                                                    </th>
-                                                </tr>
+                                                    <tr>
+                                                        <td colSpan="3" style={{ textAlign: 'right', color: 'black', fontSize: '15px', fontWeight: '500', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                            Tổng tiền
+                                                        </td>
+                                                        <td style={{ textAlign: 'right' }}>
+                                                            <span style={{ color: 'red', fontSize: '15px', fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                                {order.totalMoney.toLocaleString('vi-VN')}₫
+                                                            </span>
+                                                        </td>
+                                                    </tr>
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -312,6 +307,7 @@ const OrderHistory = () => {
                                 </div>
                             </div>
                         ))}
+
                         <nav className="pagination">
                             <ul className="pagination">
                                 <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
