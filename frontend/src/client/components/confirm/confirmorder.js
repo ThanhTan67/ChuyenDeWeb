@@ -243,7 +243,7 @@ const Confirmation = () => {
                     </div>
 
                     {/* Bảng chi tiết sản phẩm */}
-                    <div className="row mt-5">
+                    <div className="row">
                         <div className="col-lg-12">
                             <div className="order_details_iner">
                                 <table className="table table-borderless">
@@ -274,7 +274,9 @@ const Confirmation = () => {
                                                         <img
                                                             src={
                                                                 item.mainImage
-                                                                    ? `${CLOUDINARY_BASE_URL}${item.mainImage}.png`
+                                                                    ? `${CLOUDINARY_BASE_URL}${item.mainImageUrl ||
+                                                                item.imageUrl ||
+                                                                item.additionalImageUrls?.[0]}.png`
                                                                     : '/img/product/default.png'
                                                             }
                                                             alt={item.productName || 'Sản phẩm'}
@@ -385,3 +387,4 @@ const Confirmation = () => {
 };
 
 export default Confirmation;
+
