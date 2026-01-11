@@ -162,50 +162,84 @@ const OrderHistory = () => {
                                     <div className="col-lg-12">
                                         <div className="confirmation_tittle"></div>
                                     </div>
-
+                                
+                                    {/* Thông tin đặt hàng */}
                                     <div className="col-lg-6 col-xl-4">
                                         <div className="single_confirmation_details">
                                             <h4>Thông tin đặt hàng</h4>
-                                            <ul>
-                                                <li><p>Mã đơn hàng</p><span>{order.id}</span></li>
-                                                <li><p>Ngày đặt</p><span>{new Date(order.bookingDate).toLocaleString('vi-VN')}</span></li>
-                                                <li><p>Tổng thanh toán</p><span>{order.totalMoney.toLocaleString('vi-VN')}₫</span></li>
-                                                <li><p>Phương thức thanh toán</p><span>{order.paymentMethod}</span></li>
+                                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid #eee' }}>
+                                                    <p style={{ margin: 0, width: '140px', fontWeight: '500', color: '#333' }}>Mã đơn hàng</p>
+                                                    <span style={{ flex: 1, textAlign: 'right', color: '#000' }}>{order.id}</span>
+                                                </li>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid #eee' }}>
+                                                    <p style={{ margin: 0, width: '140px', fontWeight: '500', color: '#333' }}>Ngày đặt</p>
+                                                    <span style={{ flex: 1, textAlign: 'right', color: '#000' }}>
+                                                        {new Date(order.bookingDate).toLocaleString('vi-VN')}
+                                                    </span>
+                                                </li>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid #eee' }}>
+                                                    <p style={{ margin: 0, width: '140px', fontWeight: '500', color: '#333' }}>Tổng thanh toán</p>
+                                                    <span style={{ flex: 1, textAlign: 'right', color: '#e74c3c', fontWeight: '600' }}>
+                                                        {order.totalMoney.toLocaleString('vi-VN')}₫
+                                                    </span>
+                                                </li>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                                    <p style={{ margin: 0, width: '140px', fontWeight: '500', color: '#333' }}>Phương thức thanh toán</p>
+                                                    <span style={{ flex: 1, textAlign: 'right', color: '#000' }}>{order.paymentMethod}</span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
-
+                                
+                                    {/* Địa chỉ giao hàng */}
                                     <div className="col-lg-6 col-xl-4">
                                         <div className="single_confirmation_details">
                                             <h4>Địa chỉ giao hàng</h4>
-                                            <ul>
-                                                <li><p>Người nhận</p><span>{order.consigneeName}</span></li>
-                                                <li><p>Số điện thoại</p><span>{order.consigneePhone}</span></li>
-                                                <li><p>Địa chỉ</p><span>{order.address}</span></li>
+                                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid #eee' }}>
+                                                    <p style={{ margin: 0, width: '140px', fontWeight: '500', color: '#333' }}>Người nhận</p>
+                                                    <span style={{ flex: 1, textAlign: 'right', color: '#000' }}>{order.consigneeName}</span>
+                                                </li>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid #eee' }}>
+                                                    <p style={{ margin: 0, width: '140px', fontWeight: '500', color: '#333' }}>Số điện thoại</p>
+                                                    <span style={{ flex: 1, textAlign: 'right', color: '#000' }}>{order.consigneePhone}</span>
+                                                </li>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                                    <p style={{ margin: 0, width: '140px', fontWeight: '500', color: '#333' }}>Địa chỉ</p>
+                                                    <span style={{ flex: 1, textAlign: 'right', color: '#000' }}>{order.address}</span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
-
+                                
+                                    {/* Thông tin bổ sung */}
                                     <div className="col-lg-6 col-xl-4">
                                         <div className="single_confirmation_details">
                                             <h4>Thông tin bổ sung</h4>
-                                            <ul>
-                                                <li><p>Ghi chú giao hàng</p><span>{order.orderNotes || 'Không có'}</span></li>
-                                                <li>
-                                                    <p>Trạng thái đơn hàng</p>
+                                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid #eee' }}>
+                                                    <p style={{ margin: 0, width: '140px', fontWeight: '500', color: '#333' }}>Ghi chú giao hàng</p>
+                                                    <span style={{ flex: 1, textAlign: 'right', color: '#000' }}>{order.orderNotes || 'Không có'}</span>
+                                                </li>
+                                                <li style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                                    <p style={{ margin: 0, width: '140px', fontWeight: '500', color: '#333' }}>Trạng thái đơn hàng</p>
                                                     <span style={{
+                                                        flex: 1,
+                                                        textAlign: 'right',
                                                         color: order.orderStatus === 'CONFIRMED' ? 'green' :
-                                                            order.orderStatus === 'PENDING' ? 'orange' :
-                                                                order.orderStatus === 'ON_DELIVERY' ? 'blue' :
-                                                                    order.orderStatus === 'DELIVERED' ? 'darkgreen' :
-                                                                        order.orderStatus === 'CANCELLED' ? 'red' : 'inherit'
+                                                               order.orderStatus === 'PENDING' ? 'orange' :
+                                                               order.orderStatus === 'ON_DELIVERY' ? 'blue' :
+                                                               order.orderStatus === 'DELIVERED' ? 'darkgreen' :
+                                                               order.orderStatus === 'CANCELLED' ? 'red' : '#000',
+                                                        fontWeight: '600'
                                                     }}>
                                                         {order.orderStatus === 'CONFIRMED' ? 'Đã xác nhận' :
-                                                            order.orderStatus === 'PENDING' ? 'Đang chờ xác nhận' :
-                                                                order.orderStatus === 'ON_DELIVERY' ? 'Đang giao' :
-                                                                    order.orderStatus === 'DELIVERED' ? 'Đã giao' :
-                                                                        order.orderStatus === 'CANCELLED' ? 'Đã hủy' :
-                                                                            order.orderStatus}
+                                                         order.orderStatus === 'PENDING' ? 'Đang chờ xác nhận' :
+                                                         order.orderStatus === 'ON_DELIVERY' ? 'Đang giao' :
+                                                         order.orderStatus === 'DELIVERED' ? 'Đã giao' :
+                                                         order.orderStatus === 'CANCELLED' ? 'Đã hủy' :
+                                                         order.orderStatus}
                                                     </span>
                                                 </li>
                                             </ul>
@@ -337,3 +371,4 @@ const OrderHistory = () => {
 };
 
 export default OrderHistory;
+
