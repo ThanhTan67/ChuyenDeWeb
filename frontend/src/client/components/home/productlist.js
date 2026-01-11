@@ -35,7 +35,7 @@ const ProductList = ({ searchTerm = '', sortBy = 'name', sortOrder = 'asc', cate
             setLoading(true);
             setError(null);
             try {
-                let url = `${PRODUCTS_API}/grid?page=0&size=10`;
+                let url = `${PRODUCTS_API}/grid?page=0&size=12`;
 
                 if (searchTerm.trim()) {
                     url = `${PRODUCTS_API}/search?keyword=${encodeURIComponent(searchTerm)}&page=0&size=12`;
@@ -319,3 +319,4 @@ const ProductList = ({ searchTerm = '', sortBy = 'name', sortOrder = 'asc', cate
 
 
 export default ProductList;
+
