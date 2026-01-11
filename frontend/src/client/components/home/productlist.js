@@ -38,7 +38,7 @@ const ProductList = ({ searchTerm = '', sortBy = 'name', sortOrder = 'asc', cate
                 let url = `${PRODUCTS_API}/grid?page=0&size=10`;
 
                 if (searchTerm.trim()) {
-                    url = `${PRODUCTS_API}/search?keyword=${encodeURIComponent(searchTerm)}&page=0&size=10`;
+                    url = `${PRODUCTS_API}/search?keyword=${encodeURIComponent(searchTerm)}&page=0&size=12`;
                 }
                 if (sortBy !== 'name' || sortOrder !== 'asc') {
                     url = `${PRODUCTS_API}/sorted?keyword=${encodeURIComponent(searchTerm || '')}&page=0&size=10&sortBy=${sortBy}&sortOrder=${sortOrder}`;
@@ -316,5 +316,6 @@ const ProductList = ({ searchTerm = '', sortBy = 'name', sortOrder = 'asc', cate
         </div>
     );
 };
+
 
 export default ProductList;
