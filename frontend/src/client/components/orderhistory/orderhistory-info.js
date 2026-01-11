@@ -265,23 +265,85 @@ const OrderHistory = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {orderDetails[order.id]?.map((item) => (
+                                                   {orderDetails[order.id]?.map((item) => (
                                                         <tr key={item.id}>
-                                                            <td colSpan="2" style={{ color: 'black', fontSize: '15px', textTransform: 'none' }}>
-                                                                <span>
-                                                                    {item.productName}
-                                                                    {(item.variantAttribute || item.variantName) && (
-                                                                        <small style={{ display: 'block', color: '#666' }}>
-                                                                            {item.variantAttribute} - {item.variantName}
-                                                                        </small>
-                                                                    )}
-                                                                </span>
+                                                            {/* Cột sản phẩm: ảnh + tên + variant */}
+                                                            <td colSpan="2" style={{
+                                                                verticalAlign: 'middle',
+                                                                padding: '12px 8px',
+                                                                color: 'black',
+                                                                fontSize: '15px',
+                                                                textTransform: 'none'
+                                                            }}>
+                                                                <div style={{
+                                                                    display: 'flex',
+                                                                    alignItems: 'center',
+                                                                    gap: '12px'  // khoảng cách giữa ảnh và text
+                                                                }}>
+                                                                    {/* Ảnh sản phẩm */}
+                                                                    <img
+                                                                        src={
+                                                                            item.mainImage
+                                                                                ? `${CLOUDINARY_BASE_URL}${item.mainImage}.png`
+                                                                                : '/img/product/default.png'
+                                                                        }
+                                                                        alt={item.productName || 'Sản phẩm'}
+                                                                        style={{
+                                                                            width: '56px',          // tăng nhẹ kích thước cho đẹp
+                                                                            height: '56px',
+                                                                            objectFit: 'cover',     // giữ tỷ lệ, không bị méo
+                                                                            flexShrink: 0
+                                                                        }}
+                                                                    />
+                                                    
+                                                                    {/* Tên sản phẩm + variant */}
+                                                                    <div style={{ flex: 1 }}>
+                                                                        <div style={{
+                                                                            fontWeight: '500',
+                                                                            lineHeight: '1.4',
+                                                                            marginBottom: '4px'
+                                                                        }}>
+                                                                            {item.productName}
+                                                                        </div>
+                                                    
+                                                                        {(item.variantAttribute || item.variantName) && (
+                                                                            <small style={{
+                                                                                display: 'block',
+                                                                                color: '#666',
+                                                                                fontSize: '13px'
+                                                                            }}>
+                                                                                {item.variantAttribute} {item.variantAttribute && item.variantName && '•'} {item.variantName}
+                                                                            </small>
+                                                                        )}
+                                                                    </div>
+                                                                </div>
                                                             </td>
-                                                            <td style={{ textAlign: 'center', color: '#505050', fontSize: '15px', fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                    
+                                                            {/* Số lượng */}
+                                                            <td style={{
+                                                                verticalAlign: 'middle',
+                                                                textAlign: 'center',
+                                                                color: '#505050',
+                                                                fontSize: '15px',
+                                                                fontWeight: 'bold',
+                                                                fontFamily: 'Poppins, sans-serif',
+                                                                padding: '12px 8px'
+                                                            }}>
                                                                 x{item.quantity}
                                                             </td>
-                                                            <td style={{ textAlign: 'right' }}>
-                                                                <span style={{ color: '#505050', fontSize: '15px', fontWeight: '500', fontFamily: 'Poppins, sans-serif', textTransform: 'none' }}>
+                                                    
+                                                            {/* Thành tiền */}
+                                                            <td style={{
+                                                                verticalAlign: 'middle',
+                                                                textAlign: 'right',
+                                                                padding: '12px 8px'
+                                                            }}>
+                                                                <span style={{
+                                                                    color: '#505050',
+                                                                    fontSize: '15px',
+                                                                    fontWeight: '500',
+                                                                    fontFamily: 'Poppins, sans-serif'
+                                                                }}>
                                                                     {(item.productPrice * item.quantity).toLocaleString('vi-VN')}₫
                                                                 </span>
                                                             </td>
@@ -371,4 +433,5 @@ const OrderHistory = () => {
 };
 
 export default OrderHistory;
+
 
