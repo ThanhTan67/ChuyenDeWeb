@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { Analytics } from '@vercel/analytics/react';
 import { AuthProvider } from './auth/authcontext';
 import { CartProvider } from "./client/contexts/cartcontext";
 import Home from './client/pages/home';
@@ -65,6 +66,7 @@ function App() {
         <AuthProvider>
           <CartProvider>
             <Router>
+              <Analytics />
               <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/shop" element={<Shop/>}/>
