@@ -24,6 +24,7 @@ import ManageOrder from './admin/pages/ManageOrder';
 import ManageVoucher from './admin/pages/ManageVoucher';
 import Wishlist from "./client/components/home/Wishlist";
 import ManageReview from "./admin/pages/ManageReview";
+import i18n from "./i18n";
 
 function App() {
   const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
