@@ -1,0 +1,22 @@
+# fly.toml app configuration file generated for backend-muddy-frog-7773 on 2026-03-09T14:01:41+07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'backend-muddy-frog-7773'
+primary_region = 'sin'
+
+[build]
+
+[http_service]
+internal_port = 8080
+force_https = true
+auto_stop_machines = false
+auto_start_machines = true
+min_machines_running = 1
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 1024

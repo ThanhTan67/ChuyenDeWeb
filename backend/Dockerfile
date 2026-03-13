@@ -10,4 +10,3 @@ WORKDIR /app
 COPY --from=build /app/target/backend-0.0.1-SNAPSHOT.war backend.war
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","backend.war"]
-
