@@ -64,11 +64,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
     
-        config.setAllowedOriginPatterns(List.of(
-            "http://localhost:3000",
-            "https://aranoz-one.vercel.app",
-            "https://*.vercel.app"   // thêm pattern để chắc chắn match domain Vercel
-        ));
+        config.setAllowedOriginPatterns(List.of(*));
     
         config.setAllowedMethods(List.of(
             "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"
@@ -100,6 +96,7 @@ public class SecurityConfig {
         return tx;
     }
 }
+
 
 
 
