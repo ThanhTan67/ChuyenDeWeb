@@ -482,23 +482,50 @@ Through this project, several important skills were developed:
 
 ## Interface
 
-### Login Page
-![Login](screenshots/skin-login.png)
+### Customer Pages
 
-### Register Page
-![Register](screenshots/skin-register.png)
+<p align="center">
+  <img src="screenshots/skin-home.png" width="45%">
+  <img src="screenshots/skin-shop.png" width="45%">
+</p>
 
-### Home Page
-![Home](screenshots/skin-home.png)
+<p align="center">
+  <img src="screenshots/skin-cart.png" width="45%">
+  <img src="screenshots/skin-checkout.png" width="45%">
+</p>
 
-### Shop Page
-![Shop](screenshots/skin-shop.png)
+<p align="center">
+  <img src="screenshots/skin-orders.png" width="45%">
+  <img src="screenshots/skin-voucher.png" width="45%">
+</p>
 
-### Shopping Cart
-![Cart](screenshots/skin-cart.png)
+---
 
-### Voucher System
-![Voucher](screenshots/skin-voucher.png)
+### Authentication
+
+<p align="center">
+  <img src="screenshots/skin-login.png" width="45%">
+  <img src="screenshots/skin-register.png" width="45%">
+</p>
+
+---
+
+### Admin Dashboard
+
+<p align="center">
+  <img src="screenshots/skin-admin-dashboard.png" width="45%">
+  <img src="screenshots/skin-admin-product.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="screenshots/skin-admin-oder.png" width="45%">
+  <img src="screenshots/skin-admin-user.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="screenshots/skin-admin-review.png" width="45%">
+  <img src="screenshots/skin-admin-voucher.png" width="45%">
+</p>
 
 ---
 
