@@ -329,7 +329,7 @@ skin-shopping-website
 
 # Installation Guide
 
-## 1. Clone Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/ThanhTan67/ChuyenDeWeb.git
