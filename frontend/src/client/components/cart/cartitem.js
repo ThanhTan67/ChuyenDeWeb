@@ -29,7 +29,6 @@ const CartItem = () => {
     const [appliedVoucher, setAppliedVoucher] = useState(null);
     const fetchCartItems = useCallback(async () => {
 
-
         try {
             setError(null);
             const res = await fetch(CART_API_URL, {

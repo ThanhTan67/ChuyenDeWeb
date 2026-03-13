@@ -186,6 +186,7 @@ public class PaymentController {
                     item.put("productName", detail.getVariant().getProduct().getName());
                     item.put("attribute", detail.getVariant().getProductAttribute());
                     item.put("variant", detail.getVariant().getVariant());
+                    item.put("mainImage", detail.getVariant().getProductImageList());
                     return item;
                 })
                 .toList();
