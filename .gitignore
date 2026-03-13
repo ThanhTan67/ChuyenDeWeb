@@ -5,6 +5,7 @@ target/
 *.class
 
 # Node.js / Frontend
+frontend/node_modules/
 node_modules/
 .cache/
 dist/
@@ -22,4 +23,3 @@ backend/.env
 # OS files
 .DS_Store
 Thumbs.db
-frontend/node_modules/
