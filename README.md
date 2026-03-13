@@ -480,13 +480,27 @@ Through this project, several important skills were developed:
 
 ---
 
-## Screenshots
+## Interface
 
-```
+### Login Page
+![Login](screenshots/skin-login.png)
 
-/screenshots
+### Register Page
+![Register](screenshots/skin-register.png)
 
-```
+### Home Page
+![Home](screenshots/skin-home.png)
+
+### Shop Page
+![Shop](screenshots/skin-shop.png)
+
+### Shopping Cart
+![Cart](screenshots/skin-cart.png)
+
+### Voucher System
+![Voucher](screenshots/skin-voucher.png)
+
+---
 
 Example screenshots may include:
 
