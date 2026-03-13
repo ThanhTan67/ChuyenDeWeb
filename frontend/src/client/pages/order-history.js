@@ -20,10 +20,11 @@ import '../../assets/css/orderhistory.css';
 const OrderHist = () => {
     return (
         <Layout>
-            <Breadcrumb title="Đơn đã đặt" subtitle="Đơn đã đặt - Trang chủ"/>
+            <Breadcrumb title="Đơn đã đặt" subtitle="Trang chủ"/>
             <OrderHistory/>
         </Layout>
     );
 };
 
 export default OrderHist;
+
