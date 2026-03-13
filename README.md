@@ -513,8 +513,7 @@ Potential improvements for future development include:
 
 ## Author
 
-**Cao Thanh Tan**
-**Project Lead / Full-Stack Developer**
+**Cao Thanh Tan - Project Lead / Full-Stack Developer**
 
 Responsible for system architecture, backend development, database design, and core feature implementation.
 
