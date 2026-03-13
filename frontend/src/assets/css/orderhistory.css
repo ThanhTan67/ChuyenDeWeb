@@ -3,7 +3,7 @@
 }
 
 .order_status_tabs .nav-tabs {
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #ffffff;
     margin-bottom: 20px;
 }
 
@@ -17,23 +17,22 @@
 }
 
 .order_status_tabs .nav-tabs .nav-link.active {
-    color: #ff3368;
-    border-bottom: 2px solid #ff3368;
+    color: #ffab00;
+    border-bottom: 2px solid #ffab00;
 }
 
 .order_status_tabs .nav-tabs .nav-link:hover {
-    color: #ff3368;
+    color: #ffab00;
 }
 
 .order_section {
-    border: 1px solid #eee;
+    border: 1px solid #cfcfcf;
     padding: 20px;
     margin-bottom: 30px;
-    border-radius: 8px;
 }
 
 .single_confirmation_details {
-    background: #f8f8f8;
+    border: 1px solid #e9ecef;
     padding: 20px;
     border-radius: 22px;
     margin-bottom: 20px;
@@ -62,9 +61,7 @@
 }
 
 .order_details_iner {
-    margin-top: 50px;
-    background-color: rgb(248 254 255);
-    padding: 30px 30px 15px;
+    margin-top: 20px;
     text-transform: capitalize;
 }
 
@@ -84,4 +81,9 @@
 /* Đường kẻ ngang dưới mỗi sản phẩm (không áp dụng cho dòng tổng, giảm giá, phí vận chuyển, tổng tiền) */
 .order_details_iner table tbody tr.product-row:not(:last-child) {
     border-bottom: 1px solid #e2e2e2;
+
 }
+
+
+
+

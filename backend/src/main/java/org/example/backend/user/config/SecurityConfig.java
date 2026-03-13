@@ -63,19 +63,19 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-
         config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(List.of(
-                "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"
+            "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"
         ));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
         config.setMaxAge(3600L);
-
+    
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -94,3 +94,7 @@ public class SecurityConfig {
         return tx;
     }
 }
+
+
+
+
