@@ -18,10 +18,11 @@ import '../../assets/css/uvoucher.css';
 const Voucher = () => {
     return (
         <Layout>
-            <Breadcrumb title="Voucher" subtitle="Voucher - Trang chủ" />
+            <Breadcrumb title="Voucher" subtitle="Trang chủ" />
             <VoucherList />
         </Layout>
     );
 };
+
 
 export default Voucher;
