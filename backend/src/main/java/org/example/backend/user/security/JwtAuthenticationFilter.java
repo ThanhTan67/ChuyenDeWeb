@@ -1,151 +1,98 @@
-package org.example.backend.user.security;
+package org.example.backend.user.config;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.persistence.EntityManagerFactory;
 import lombok.RequiredArgsConstructor;
-import org.example.backend.user.entity.User;
-import org.example.backend.user.repository.UserRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseCookie;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
+import org.example.backend.user.security.JwtAuthenticationFilter;
+import org.example.backend.user.security.RestAccessDeniedHandler;
+import org.example.backend.user.security.RestAuthenticationEntryPoint;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.cors.*;
 
-import java.io.IOException;
-import java.util.Arrays;
+import java.util.List;
 
-@Component
+@Configuration
+@EnableWebSecurity
 @RequiredArgsConstructor
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+public class SecurityConfig {
 
-    private final JwtService jwtService;
-    private final UserDetailsService userDetailsService;
-    private final UserRepository userRepository;
+    private final JwtAuthenticationFilter jwtFilter;
+    private final RestAuthenticationEntryPoint entryPoint;
+    private final RestAccessDeniedHandler deniedHandler;
 
-    @Override
-    protected void doFilterInternal(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            FilterChain filterChain
-    ) throws ServletException, IOException {
-
-        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
-            filterChain.doFilter(request, response);
-            return;
-        }
-
-        final String requestPath = request.getServletPath();
-        // Các endpoint public được phép truy cập không cần xác thực
-        if (requestPath.startsWith("/api/auth")
-//                || requestPath.startsWith("/oauth2")
-                || requestPath.startsWith("/api/products")
-                || requestPath.startsWith("/api/shipping")
-                || requestPath.startsWith("/api/voucher")
-                || requestPath.startsWith("/api/categories")
-                || requestPath.startsWith("/api/images")
-                || requestPath.startsWith("/api/review")){
-            filterChain.doFilter(request, response);
-            return;
-        }
-
-        final String accessToken = extractTokenFromCookies(request, "accessToken");
-        final String refreshToken = extractTokenFromCookies(request, "refreshToken");
-
-        if (accessToken == null || accessToken.isBlank()) {
-            response.setStatus(HttpStatus.UNAUTHORIZED.value());
-            response.getWriter().write("{\"error\": \"Access token is missing\"}");
-            return;
-        }
-
-        try {
-            String username = jwtService.extractUsername(accessToken);
-            if (username == null) {
-                response.setStatus(HttpStatus.UNAUTHORIZED.value());
-                response.getWriter().write("{\"error\": \"Invalid access token\"}");
-                return;
-            }
-
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            User user = userRepository.findByUsername(username)
-                    .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
-
-            if (jwtService.isTokenValid(accessToken, userDetails, user.getTokenVersion())) {
-                setAuthentication(request, userDetails);
-            } else if (refreshToken != null && jwtService.isRefreshTokenValid(refreshToken, userDetails, user.getTokenVersion())) {
-                // Tạo token mới và refresh token mới
-                String newTokenVersion = jwtService.generateTokenVersion();
-                String newAccessToken = jwtService.generateToken(userDetails, newTokenVersion);
-                String newRefreshToken = jwtService.generateRefreshToken(userDetails, newTokenVersion);
-
-                // Cập nhật token version mới vào DB
-                user.setTokenVersion(newTokenVersion);
-                userRepository.save(user);
-
-                // Set cookie mới cho client
-                response.addHeader("Set-Cookie", createAccessTokenCookie(newAccessToken).toString());
-                response.addHeader("Set-Cookie", createRefreshTokenCookie(newRefreshToken).toString());
-
-                setAuthentication(request, userDetails);
-            } else {
-                response.setStatus(HttpStatus.UNAUTHORIZED.value());
-                response.getWriter().write("{\"error\": \"Tokens are invalid or expired\"}");
-                return;
-            }
-        } catch (Exception ex) {
-            response.setStatus(HttpStatus.UNAUTHORIZED.value());
-            response.getWriter().write("{\"error\": \"Authentication error: " + ex.getMessage() + "\"}");
-            return;
-        }
-
-        filterChain.doFilter(request, response);
-    }
-
-    private void setAuthentication(HttpServletRequest request, UserDetails userDetails) {
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                userDetails,
-                null,
-                userDetails.getAuthorities()
-        );
-        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-        SecurityContextHolder.getContext().setAuthentication(authToken);
-    }
-
-    private String extractTokenFromCookies(HttpServletRequest request, String cookieName) {
-        Cookie[] cookies = request.getCookies();
-        if (cookies == null) return null;
-
-        return Arrays.stream(cookies)
-                .filter(cookie -> cookieName.equals(cookie.getName()))
-                .map(Cookie::getValue)
-                .findFirst()
-                .orElse(null);
-    }
-
-    private ResponseCookie createAccessTokenCookie(String token) {
-        return ResponseCookie.from("accessToken", token)
-                .httpOnly(true)
-                .secure(true)
-                .sameSite("None")
-                .path("/")
-                .maxAge(15 * 60)
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint(entryPoint)
+                        .accessDeniedHandler(deniedHandler)
+                )
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(
+                                "/api/auth/**",
+                                "/api/products/**",
+                                "/api/images/**",
+                                "/api/shipping/**",
+                                "/api/review/**",
+                                "/api/vouchers/**"
+                        ).permitAll()
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                )
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-    private ResponseCookie createRefreshTokenCookie(String token) {
-        return ResponseCookie.from("refreshToken", token)
-                .httpOnly(true)
-                .secure(true)
-                .sameSite("None")
-                .path("/")
-                .maxAge(30 * 60)
-                .build();
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+
+        config.setAllowCredentials(true);
+        config.setAllowedOriginPatterns(List.of(
+                "http://localhost:3000",
+                "https://aranoz-shop.vercel.app"
+        ));
+
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setExposedHeaders(List.of("Authorization"));
+        config.setMaxAge(3600L);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+
+        return source;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+        JpaTransactionManager tx = new JpaTransactionManager();
+        tx.setEntityManagerFactory(emf);
+        return tx;
     }
 }
