@@ -5,6 +5,7 @@ import { useAuth } from '../../../auth/authcontext';
 import { useTranslation } from 'react-i18next';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { trackBehavior } from '../utils/behaviorTracking';
 
 // Biến môi trường chung (fallback về localhost khi dev)
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://localhost:8443';
@@ -149,6 +150,10 @@ const BestSellers = () => {
             });
             if (!response.ok) throw new Error('Thêm vào giỏ hàng thất bại');
             await response.json();
+
+            // Track ADD_TO_CART behavior event
+            trackBehavior(user?.id, selectedProduct?.id, 'ADD_TO_CART');
+
             setModalOpen(false);
             setSuccessModalOpen(true);
             fetchCart();
@@ -205,7 +210,10 @@ const BestSellers = () => {
                             <div
                                 className="product-card"
                                 key={product.id}
-                                onClick={() => navigate(`/shop-detail/${product.id}`)}
+                                onClick={() => {
+                                    trackBehavior(user?.id, product.id, 'CLICK');
+                                    navigate(`/shop-detail/${product.id}`);
+                                }}
                                 style={{ cursor: 'pointer' }}
                             >
                                 <img

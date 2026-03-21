@@ -1,6 +1,4 @@
-// API_DEBUG.js - Thêm file này vào project của bạn
-// Hàm này giúp kiểm tra API trước khi dùng
-
+// API_DEBUG.js
 export const debugFetch = async (url, options = {}) => {
     console.log(`🔍 Gửi yêu cầu đến: ${url}`);
     console.log('📤 Options:', options);
@@ -41,14 +39,3 @@ export const debugFetch = async (url, options = {}) => {
         throw error;
     }
 };
-
-// Cách sử dụng trong Login.js:
-/*
-import { debugFetch } from './API_DEBUG';
-
-// Thay
-const res = await fetch(`${API_BASE_URL}/api/auth/login`, {...});
-
-// Bằng
-const res = await debugFetch(`${API_BASE_URL}/api/auth/login`, {...});
-*/

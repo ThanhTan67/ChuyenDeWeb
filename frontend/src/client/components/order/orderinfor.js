@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../auth/authcontext";
+import { trackBehavior } from '../utils/behaviorTracking';
 
 const ORDER_API_URL = `${process.env.REACT_APP_API_BASE_URL || 'https://localhost:8443'}/api/orders`;
 const PAYMENT_API_URL = `${process.env.REACT_APP_API_BASE_URL || 'https://localhost:8443'}/api/payment`;
@@ -247,6 +248,12 @@ const OrderInfo = () => {
                 });
                 const data = await response.json();
                 if (!response.ok) throw new Error(data.message || 'Đặt hàng thất bại');
+
+                // Track PURCHASE behavior event for each product
+                selectedCartItems.forEach(item => {
+                    trackBehavior(user?.id, item.productId || item.id, 'PURCHASE');
+                });
+
                 navigate('/confirm-order', {
                     state: {
                         order: data.data,

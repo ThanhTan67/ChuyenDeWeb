@@ -7,7 +7,7 @@
 (function () {
   // On hiding modal, remove iframe video/audio to stop playing
   const youTubeModal = document.querySelector('#youTubeModal'),
-    youTubeModalVideo = youTubeModal.querySelector('iframe');
+      youTubeModalVideo = youTubeModal.querySelector('iframe');
   youTubeModal.addEventListener('hidden.bs.modal', function () {
     youTubeModalVideo.setAttribute('src', '');
   });
@@ -18,9 +18,9 @@
     modalTriggerList.map(function (modalTriggerEl) {
       modalTriggerEl.onclick = function () {
         const theModal = this.getAttribute('data-bs-target'),
-          videoSRC = this.getAttribute('data-theVideo'),
-          videoSRCauto = `${videoSRC}?autoplay=1`,
-          modalVideo = document.querySelector(`${theModal} iframe`);
+            videoSRC = this.getAttribute('data-theVideo'),
+            videoSRCauto = `${videoSRC}?autoplay=1`,
+            modalVideo = document.querySelector(`${theModal} iframe`);
         if (modalVideo) {
           modalVideo.setAttribute('src', videoSRCauto);
         }

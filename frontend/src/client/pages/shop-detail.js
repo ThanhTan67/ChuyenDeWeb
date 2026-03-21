@@ -5,8 +5,10 @@ import Breadcrumb from '../components/layout/breadcrumb';
 import ProductImage from '../components/shop-detail/productimage';
 import ProductInfo from '../components/shop-detail/productinfor';
 import Layout from '../components/layout/layout';
-import BestSellers from "../components/home/bestsellers";
+import SimilarProducts from '../components/shop-detail/SimilarProducts';
 import ProductReview from "../components/shop-detail/review";
+import { useAuth } from '../../auth/authcontext';
+import { trackBehavior } from '../components/utils/behaviorTracking';
 
 import '../../assets/css/style.css';
 import '../../assets/css/product-info.css';
@@ -17,6 +19,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://localhost:84
 
 const ShopDetail = () => {
     const { t } = useTranslation();
+    const { user } = useAuth();
     const { productId } = useParams();
     const [selectedVariant, setSelectedVariant] = useState(null);
     const [product, setProduct] = useState(null);
@@ -41,6 +44,10 @@ const ShopDetail = () => {
                 if (!data || !data.variants) throw new Error('Invalid product data');
 
                 setProduct(data);
+
+                // Track VIEW behavior event
+                trackBehavior(user?.id, numericProductId, 'VIEW');
+
                 const defaultVariant = data.variants.find(variant =>
                     variant.images.some(img => img.main)
                 ) || data.variants[0];
@@ -104,7 +111,7 @@ const ShopDetail = () => {
                 </div>
             </div>
             <ProductReview productId={Number(productId)} />
-            <BestSellers />
+            <SimilarProducts productId={Number(productId)} />
         </Layout>
     );
 };
