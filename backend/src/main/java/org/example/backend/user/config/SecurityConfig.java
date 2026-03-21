@@ -65,7 +65,8 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.setAllowedOrigins(List.of(
-                "https://aranoz-shop.vercel.app"
+            "http://localhost:3000",
+            "https://aranoz-shop.vercel.app"
         ));
         config.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"
