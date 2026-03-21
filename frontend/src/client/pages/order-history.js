@@ -27,4 +27,3 @@ const OrderHist = () => {
 };
 
 export default OrderHist;
-

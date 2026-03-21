@@ -8,7 +8,7 @@
   // Bootstrap toasts example
   // --------------------------------------------------------------------
   const toastPlacementExample = document.querySelector('.toast-placement-ex'),
-    toastPlacementBtn = document.querySelector('#showToastPlacement');
+      toastPlacementBtn = document.querySelector('#showToastPlacement');
   let selectedType, selectedPlacement, toastPlacement;
 
   // Dispose toast when open another

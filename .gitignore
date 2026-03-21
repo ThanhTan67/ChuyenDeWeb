@@ -23,11 +23,3 @@ backend/.env
 # OS files
 .DS_Store
 Thumbs.db
-
-# Python
-venv/
-__pycache__/
-*.pyc
-
-# Logs
-*.log

@@ -41,20 +41,20 @@ export default function Navbar() {
                         <a href="/shop" className="menu-link">
                             <div>
                                 {user ? (
-                                <div className="user-dropdown">
+                                    <div className="user-dropdown">
                                         <span className="user-name" style={{color:'black',fontSize:'16px'}}>
                                             {user?.username || user?.email?.split('@')[0]}
                                         </span>
-                                    <div className="dropdown-content">
-                                        <a href="#" className="auth" onClick={(e) => { e.preventDefault(); handleLogout(); }}>Logout</a>
+                                        <div className="dropdown-content">
+                                            <a href="#" className="auth" onClick={(e) => { e.preventDefault(); handleLogout(); }}>Logout</a>
+                                        </div>
                                     </div>
-                                </div>
-                            ) : (
-                                <div className="log">
-                                    <img src="/img/login.png" alt="Login" style={{ marginRight: '5px', color:'black' }} />
-                                    <Link to="/login">Login</Link>
-                                </div>
-                            )}
+                                ) : (
+                                    <div className="log">
+                                        <img src="/img/login.png" alt="Login" style={{ marginRight: '5px', color:'black' }} />
+                                        <Link to="/login">Login</Link>
+                                    </div>
+                                )}
                             </div>
                         </a>
                     </li>

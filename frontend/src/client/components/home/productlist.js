@@ -327,4 +327,3 @@ const ProductList = ({ searchTerm = '', sortBy = 'name', sortOrder = 'asc', cate
 
 
 export default ProductList;
-

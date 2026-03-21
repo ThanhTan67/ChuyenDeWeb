@@ -26,3 +26,4 @@ const ConfirmPage = () => {
 };
 
 export default ConfirmPage;
+

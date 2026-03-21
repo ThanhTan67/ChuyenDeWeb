@@ -329,7 +329,11 @@ skin-shopping-website
 
 # Installation Guide
 
+<<<<<<< HEAD
 ## 1. Clone Repository
+=======
+## Clone Repository
+>>>>>>> 68ea31269c997b6a0ebcf59ee12b0c1134d0dc15
 
 ```bash
 git clone https://github.com/ThanhTan67/ChuyenDeWeb.git
@@ -480,6 +484,7 @@ Through this project, several important skills were developed:
 
 ---
 
+<<<<<<< HEAD
 ## Screenshots
 
 ```
@@ -487,6 +492,56 @@ Through this project, several important skills were developed:
 /screenshots
 
 ```
+=======
+## Interface
+
+### Customer Pages
+
+<p align="center">
+  <img src="screenshots/skin-home.png" width="45%">
+  <img src="screenshots/skin-shop.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="screenshots/skin-cart.png" width="45%">
+  <img src="screenshots/skin-checkout.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="screenshots/skin-orders-history.png" width="45%">
+  <img src="screenshots/skin-voucher.png" width="45%">
+</p>
+
+---
+
+### Authentication
+
+<p align="center">
+  <img src="screenshots/skin-login.png" width="45%">
+  <img src="screenshots/skin-register.png" width="45%">
+</p>
+
+---
+
+### Admin Dashboard
+
+<p align="center">
+  <img src="screenshots/skin-admin-dashboard.png" width="45%">
+  <img src="screenshots/skin-admin-product.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="screenshots/skin-admin-oder.png" width="45%">
+  <img src="screenshots/skin-admin-user.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="screenshots/skin-admin-review.png" width="45%">
+  <img src="screenshots/skin-admin-voucher.png" width="45%">
+</p>
+
+---
+>>>>>>> 68ea31269c997b6a0ebcf59ee12b0c1134d0dc15
 
 Example screenshots may include:
 
