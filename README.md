@@ -329,11 +329,7 @@ skin-shopping-website
 
 # Installation Guide
 
-<<<<<<< HEAD
-## 1. Clone Repository
-=======
 ## Clone Repository
->>>>>>> 68ea31269c997b6a0ebcf59ee12b0c1134d0dc15
 
 ```bash
 git clone https://github.com/ThanhTan67/ChuyenDeWeb.git
@@ -484,15 +480,6 @@ Through this project, several important skills were developed:
 
 ---
 
-<<<<<<< HEAD
-## Screenshots
-
-```
-
-/screenshots
-
-```
-=======
 ## Interface
 
 ### Customer Pages
@@ -541,7 +528,6 @@ Through this project, several important skills were developed:
 </p>
 
 ---
->>>>>>> 68ea31269c997b6a0ebcf59ee12b0c1134d0dc15
 
 Example screenshots may include:
 
