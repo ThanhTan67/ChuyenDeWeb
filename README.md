@@ -495,7 +495,7 @@ Through this project, several important skills were developed:
 </p>
 
 <p align="center">
-  <img src="screenshots/skin-orders.png" width="45%">
+  <img src="screenshots/skin-orders-history.png" width="45%">
   <img src="screenshots/skin-voucher.png" width="45%">
 </p>
 
