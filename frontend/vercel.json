@@ -1,0 +1,10 @@
+{
+  "build": {
+    "env": {
+      "NPM_FLAGS": "--legacy-peer-deps",
+      "DISABLE_ESLINT_PLUGIN": "true",
+      "CI": "false"
+    }
+  },
+  "installCommand": "npm install --legacy-peer-deps"
+}
