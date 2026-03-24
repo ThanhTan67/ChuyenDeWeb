@@ -5,7 +5,6 @@ import { useCart } from '../../contexts/cartcontext';
 import { useAuth } from '../../../auth/authcontext';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { trackBehavior } from '../utils/behaviorTracking';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://localhost:8443';
 const CART_API_URL = `${API_BASE_URL}/api/cart`;
@@ -98,10 +97,6 @@ const ProductInfo = ({ product, selectedVariant: externalVariant, onVariantChang
                 throw new Error(t('error_loading_product'));
             }
             await response.json();
-
-            // Track ADD_TO_CART behavior event
-            trackBehavior(user?.id, product?.id, 'ADD_TO_CART');
-
             setSuccessModalOpen(true);
             fetchCart();
             setTimeout(() => setSuccessModalOpen(false), 1500);

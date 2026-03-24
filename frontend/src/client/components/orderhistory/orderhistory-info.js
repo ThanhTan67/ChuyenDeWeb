@@ -327,7 +327,7 @@ const OrderHistory = () => {
                                                             color: '#505050',
                                                             fontSize: '15px',
                                                             fontWeight: 'bold',
-
+                                                            
                                                             padding: '12px 8px'
                                                         }}>
                                                             x{item.quantity}
@@ -434,3 +434,6 @@ const OrderHistory = () => {
 };
 
 export default OrderHistory;
+
+
+

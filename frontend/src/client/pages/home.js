@@ -4,7 +4,6 @@ import Banner from '../components/home/banner';
 import ProductList from '../components/home/productlist';
 import WeeklyOffer from '../components/home/weeklyoffer';
 import BestSellers from '../components/home/bestsellers';
-import RecommendedProducts from '../components/home/RecommendedProducts';
 import Newsletter from '../components/home/newsletter';
 import ClientLogos from '../components/home/clientlogos';
 // Import CSS
@@ -27,7 +26,6 @@ const Home = () => {
             <ProductList />
             <WeeklyOffer />
             <BestSellers />
-            <RecommendedProducts />
             <Newsletter />
             <ClientLogos />
         </Layout>

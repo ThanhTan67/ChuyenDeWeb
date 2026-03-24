@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Sidebar from './sidebar';
 import ProductSorting from './productsorting';
 import ProductGrid from './productgrid';
-import { useAuth } from '../../../auth/authcontext';
-import { trackBehavior } from '../utils/behaviorTracking';
 
 const CategoryProductArea = () => {
     const [filters, setFilters] = useState({
@@ -14,15 +12,8 @@ const CategoryProductArea = () => {
         brand: '',
     });
 
-    const { user } = useAuth();
-
     const handleSearch = (searchTerm) => {
         setFilters((prev) => ({ ...prev, searchTerm }));
-
-        // Track SEARCH behavior event
-        if (searchTerm && searchTerm.trim()) {
-            trackBehavior(user?.id, null, 'SEARCH', searchTerm.trim());
-        }
     };
 
     const handleSort = (sortBy, sortOrder) => {

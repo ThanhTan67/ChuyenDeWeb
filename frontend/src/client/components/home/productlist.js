@@ -5,7 +5,6 @@ import { useCart } from '../../contexts/cartcontext';
 import { useAuth } from '../../../auth/authcontext';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { trackBehavior } from '../utils/behaviorTracking';
 
 // Sử dụng biến môi trường (fallback localhost cho dev)
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://localhost:8443';
@@ -139,10 +138,6 @@ const ProductList = ({ searchTerm = '', sortBy = 'name', sortOrder = 'asc', cate
             if (!response.ok) throw new Error(t('add_to_cart_failed'));
 
             await response.json();
-
-            // Track ADD_TO_CART behavior event
-            trackBehavior(user?.id, selectedProduct?.id, 'ADD_TO_CART');
-
             setModalOpen(false);
             setSuccessModalOpen(true);
             fetchCart();
@@ -198,10 +193,7 @@ const ProductList = ({ searchTerm = '', sortBy = 'name', sortOrder = 'asc', cate
                     <div
                         className="product-card"
                         key={product.id}
-                        onClick={() => {
-                            trackBehavior(user?.id, product.id, 'CLICK');
-                            navigate(`/shop-detail/${product.id}`);
-                        }}
+                        onClick={() => navigate(`/shop-detail/${product.id}`)}
                         style={{ cursor: 'pointer' }}
                     >
                         <img
@@ -327,3 +319,4 @@ const ProductList = ({ searchTerm = '', sortBy = 'name', sortOrder = 'asc', cate
 
 
 export default ProductList;
+
