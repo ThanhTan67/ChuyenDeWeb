@@ -20,7 +20,6 @@ build/
 .env
 backend/.env
 frontend/.env
-recommendation-service/.env
 
 # OS files
 .DS_Store
