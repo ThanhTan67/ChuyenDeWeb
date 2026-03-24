@@ -19,7 +19,13 @@ build/
 
 .env
 backend/.env
+frontend/.env
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# Python
+venv/
+*.pyc
+__pycache__/
