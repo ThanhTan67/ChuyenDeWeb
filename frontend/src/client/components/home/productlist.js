@@ -320,3 +320,7 @@ const ProductList = ({ searchTerm = '', sortBy = 'name', sortOrder = 'asc', cate
 
 export default ProductList;
 
+
+=======
+export default ProductList;
+>>>>>>> 65e3fd811977cce8ecce12b776273dd019c72d73
